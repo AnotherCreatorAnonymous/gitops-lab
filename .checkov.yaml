@@ -2,4 +2,10 @@ framework:
   - terraform
 compact: true
 quiet: true
-skip-check: []
+skip-check:
+  - CKV_AZURE_59   # Es un sitio web estático, requiere acceso público a los archivos html.
+  - CKV2_AZURE_33  # No requiere endpoint privado porque sirve contenido público a internet.
+  - CKV2_AZURE_1   # Son archivos HTML públicos, no hay datos sensibles que requieran llave administrada.
+  - CKV_AZURE_206  # Es un entorno de laboratorio/desarrollo, la replicación LRS básica es suficiente.
+  - CKV_AZURE_33   # No usamos el servicio de colas (Queue) en un sitio web estático.
+  - CKV2_AZURE_40  # Terraform necesita la clave compartida para poder subir el archivo index.html.
