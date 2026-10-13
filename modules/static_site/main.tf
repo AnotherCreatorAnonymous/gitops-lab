@@ -19,13 +19,15 @@ resource "azurerm_storage_account" "site" {
   allow_nested_items_to_be_public = false
   tags                            = var.tags
   shared_access_key_enabled       = true
+
   blob_properties {
     delete_retention_policy {
-      days                        = 7
+      days = 7
     }
   }
+
   sas_policy {
-    expiration_period             = "07.00:00:00"
+    expiration_period = "07.00:00:00"
   }
 }
 
